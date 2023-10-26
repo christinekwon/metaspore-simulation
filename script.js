@@ -3,6 +3,9 @@
 
 
 const canvas = document.getElementsByTagName('canvas')[0];
+const headerWrapper = document.getElementById('header-wrapper');
+canvas.style.height = headerWrapper.clientHeight + 'px';
+
 resizeCanvas();
 
 let config = {
