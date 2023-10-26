@@ -3,8 +3,8 @@
 
 
 const canvas = document.getElementsByTagName('canvas')[0];
-// const headerWrapper = document.getElementById('header-wrapper');
-// canvas.style.height = headerWrapper.clientHeight + 'px';
+const headerWrapper = document.getElementById('header-wrapper');
+canvas.style.height = headerWrapper.clientHeight + 'px';
 
 // setTimeout(() => {
 //     document.querySelector('img').style.filter='invert(1)';
