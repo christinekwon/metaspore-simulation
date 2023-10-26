@@ -6,32 +6,28 @@ const canvas = document.getElementsByTagName('canvas')[0];
 // const headerWrapper = document.getElementById('header-wrapper');
 // canvas.style.height = headerWrapper.clientHeight + 'px';
 
-// setTimeout(() => {
-//     document.querySelector('img').style.filter='invert(1)';
-// }, 5000)
 resizeCanvas();
-
 
 let config = {
     SIM_RESOLUTION: 512,
     DYE_RESOLUTION: 256,
     CAPTURE_RESOLUTION: 512,
-    DENSITY_DISSIPATION: 0.2,
-    VELOCITY_DISSIPATION: 0.1,
+    DENSITY_DISSIPATION: 3,
+    VELOCITY_DISSIPATION: 0.01,
     PRESSURE: 0.3,
     PRESSURE_ITERATIONS: 10,
-    CURL: 10,
-    SPLAT_RADIUS: 0.3,
+    CURL: 12,
+    SPLAT_RADIUS: 0.5,
     SPLAT_FORCE: 6000,
     SHADING: true,
     COLORFUL: false,
-    COLOR_UPDATE_SPEED: 1,
+    COLOR_UPDATE_SPEED: 10,
     PAUSED: false,
     BACK_COLOR: { r: 1, g: 1, b: 1 },
     TRANSPARENT: false,
     SUNRAYS: true,
     SUNRAYS_RESOLUTION: 196,
-    SUNRAYS_WEIGHT: 0.5,
+    SUNRAYS_WEIGHT: 1.0,
 }
 
 function pointerPrototype () {
@@ -925,7 +921,6 @@ function updateKeywords () {
 
 updateKeywords();
 initFramebuffers();
-// multipleSplats(parseInt(Math.random() * 20) + 5);
 initSplats();
 
 let lastUpdateTime = Date.now();
@@ -1147,92 +1142,23 @@ function multipleSplats (amount) {
     }
 }
 
-function initSplats ( ) {
-    // let Y = Math.random()/3;
-    let Y = 0.2;
-   initSplatGroup(0,Y);
-
-
-//    let posX = scaleByPixelRatio(e.offsetX);
-//    let posY = scaleByPixelRatio(e.offsetY);
-
-//    setTimeout(() => {
-//     initSplatGroup(0.2, Y);
-//    }, 500);
-//    setTimeout(() => {
-//     initSplatGroup(0.3, Y);
-//    }, 1000);
-//    setTimeout(() => {
-//     initSplatGroup(0.4, Y);
-//    }, 1500);
-
-    
-    // Y = Math.random();
-    // for (let i = 0; i < 5; i++) {
-    //     const color = generateColor();
-    //     color.r *= 10.0;
-    //     color.g *= 10.0;
-    //     color.b *= 10.0;
-    //     const x = 1 - (Math.random() / 4.0);
-    //     const y =Y;
-    //     const dx = -1000 * (Math.random());
-    //     const dy = 1000 * (Math.random() - 0.3);
-    //     splat(x, y, dx, dy, color);
-    // }
+function initSplats () {
+    let randomYleft = Math.random();
+    let randomYright = Math.random();
+// let Y = Math.random()/3;
+for (let i = 0; i < 10; i++) {
+    const color = generateColor();
+    color.r *= 10.0;
+    color.g *= 10.0;
+    color.b *= 10.0;
+    const x = Math.random();
+    const y =Math.random();
+    const dx = 1000 * (Math.random());
+    const dy = 1000 * (Math.random() - 0.3);
+    splat(x, y, dx, dy, color);
+}
 }
 
-function initSplatGroup(xPos, yPos) {
-   
-    for (let i = 0; i < 5; i++) {
-        const color = generateColor();
-        color.r *= 10.0;
-        color.g *= 10.0;
-        color.b *= 10.0;
-        const x = xPos + 0.03 * i;
-        const y = yPos ;
-        const dx = 1000 * (Math.random());
-        const dy = dx/4;
-        splat(x, y, dx, dy, color);
-    }
-
-    // setTimeout(() => {
-    //     for (let i = 0; i < 5; i++) {
-    //         const color = generateColor();
-    //         color.r *= 10.0;
-    //         color.g *= 10.0;
-    //         color.b *= 10.0;
-    //         const x = xPos * 2;
-    //         const y = Y;
-    //         const dx = 1000 * (Math.random());
-    //         const dy = 1000 * (Math.random() - 0.3);
-    //         splat(x, y, dx, dy, color);
-    //     }
-    // },1000)
-}
-// function initSplats () {
-//     for (let i = 0 ; i< 10; i++) {
-//         initSplatGroup();
-//     }
-// }
-
-// function initSplatGroup() {
-//     let randomX= Math.random();
-//     let randomY = Math.random();
-//     let num = 1000;
-// for (let i = 0; i < 10; i++) {
-//     const color = generateColor();
-//     color.r *= 10.0;
-//     color.g *= 10.0;
-//     color.b *= 10.0;
-//     const x = randomX + 0.1;
-//     const y =randomY + 0.1;
-//     const dx = Math.random() * (num * 2) - num;
-//     const dy = Math.random() * (num * 2) - num;
-//     // const dx = 1000 * (Math.random() - 0.5);
-//     // const dy = 1000 * (Math.random() - 0.5);
-//     splat(x, y, dx, dy, color);
-// }
-// }
 function initSplats1 () {
     let randomYleft = Math.random();
     let randomYright = Math.random();
