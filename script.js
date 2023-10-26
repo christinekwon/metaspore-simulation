@@ -6,15 +6,15 @@ const canvas = document.getElementsByTagName('canvas')[0];
 resizeCanvas();
 
 let config = {
-    SIM_RESOLUTION: 256,
+    SIM_RESOLUTION: 512,
     DYE_RESOLUTION: 256,
     CAPTURE_RESOLUTION: 512,
     DENSITY_DISSIPATION: 0.3,
-    VELOCITY_DISSIPATION: 0.2,
+    VELOCITY_DISSIPATION: 0.01,
     PRESSURE: 0.3,
     PRESSURE_ITERATIONS: 10,
     CURL: 12,
-    SPLAT_RADIUS: 0.05,
+    SPLAT_RADIUS: 0.1,
     SPLAT_FORCE: 6000,
     SHADING: true,
     COLORFUL: false,
@@ -1140,17 +1140,42 @@ function multipleSplats (amount) {
 }
 
 function initSplats () {
-    for (let i = 0; i < 5; i++) {
-        const color = generateColor();
-        color.r *= 10.0;
-        color.g *= 10.0;
-        color.b *= 10.0;
-        const x = Math.random() / 4.0;
-        const y =0.3;
-        const dx = 1000 * (Math.random());
-        const dy = 1000 * (Math.random() - 0.3);
-        splat(x, y, dx, dy, color);
-    }
+    let randomYleft = Math.random();
+    let randomYright = Math.random();
+//     for (let i = 0; i < 3; i++) {
+//         const color = generateColor();
+//         color.r *= 10.0;
+//         color.g *= 10.0;
+//         color.b *= 10.0;
+//         const x = 0;
+//         const y =  randomYleft+i*0.01;
+//         const dx = 1000 * (Math.random());
+//         const dy = 100 * (Math.random());
+//         splat(x, y, dx, dy, color);
+//     }
+//     for (let i = 0; i < 3; i++) {
+//         const color = generateColor();
+//         color.r *= 10.0;
+//         color.g *= 10.0;
+//         color.b *= 10.0;
+//         const x = 1;
+//         const y = randomYright+i*0.01;
+//         const dx = -1000 * (Math.random());
+//         const dy = 100 * (Math.random() - 0.3);
+//         splat(x, y, dx, dy, color);
+//     }
+let Y = Math.random()/3;
+for (let i = 0; i < 5; i++) {
+    const color = generateColor();
+    color.r *= 10.0;
+    color.g *= 10.0;
+    color.b *= 10.0;
+    const x = Math.random() / 4.0;
+    const y =Y;
+    const dx = 1000 * (Math.random());
+    const dy = 1000 * (Math.random() - 0.3);
+    splat(x, y, dx, dy, color);
+}
 }
 
 function splat (x, y, dx, dy, color) {
