@@ -3,8 +3,8 @@
 
 
 const canvas = document.getElementsByTagName('canvas')[0];
-const headerWrapper = document.getElementById('header-wrapper');
-canvas.style.height = headerWrapper.clientHeight + 'px';
+// const headerWrapper = document.getElementById('header-wrapper');
+// canvas.style.height = headerWrapper.clientHeight + 'px';
 
 // setTimeout(() => {
 //     document.querySelector('img').style.filter='invert(1)';
@@ -1149,7 +1149,7 @@ function multipleSplats (amount) {
 
 function initSplats ( ) {
     // let Y = Math.random()/3;
-    let Y = 0.2;
+    let Y = 0.8;
    initSplatGroup(0,Y);
 
 
@@ -1191,7 +1191,7 @@ function initSplatGroup(xPos, yPos) {
         const x = xPos + 0.03 * i;
         const y = yPos ;
         const dx = 1000 * (Math.random());
-        const dy = dx/4;
+        const dy = -dx/10;
         splat(x, y, dx, dy, color);
     }
 
